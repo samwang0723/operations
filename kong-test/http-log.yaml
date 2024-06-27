@@ -1,0 +1,14 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: http-log
+  namespace: echo
+config:
+  http_endpoint: https://mock_9d906eb8bd804a899d51419650c9fbfa.mock.insomnia.rest/:id
+  method: POST
+  timeout: 1000
+  keepalive: 1000
+  flush_timeout: 2
+  retry_count: 15
+plugin: http-log
+---
