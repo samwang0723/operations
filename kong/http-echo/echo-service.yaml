@@ -17,6 +17,8 @@ spec:
   ports:
     - port: 5678
       name: http
+      protocol: TCP
+      targetPort: 5678
   selector:
     app: http-echo
     version: v1
@@ -33,6 +35,8 @@ spec:
   ports:
     - port: 5678
       name: http
+      protocol: TCP
+      targetPort: 5678
   selector:
     app: http-echo
     version: v2

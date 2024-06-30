@@ -2,8 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    konghq.com/plugins: rate-limit
-    konghq.com/plugins: http-log
+    konghq.com/plugins: http-log,rate-limit
+    # konghq.com/strip-path: "true"
   name: kong-ingress
   namespace: echo
 spec:
@@ -22,6 +22,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  # annotations:
+  #  konghq.com/strip-path: "true"
   name: kong-ingress-2
   namespace: echo
 spec:
@@ -36,5 +38,4 @@ spec:
                 name: http-echo-2
                 port:
                   number: 5678
----
 
