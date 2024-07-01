@@ -1,0 +1,39 @@
+registry: gcr.io/datadoghq
+
+datadog:
+  apiKey: 7fd884ac868cbea0e96ff0407ffa9913
+  apiKeyExistingSecret: datadog-secret
+  appKeyExistingSecret: datadog-secret
+  site: ap1.datadoghq.com
+  kubeStateMetricsEnabled: true
+  kubeStateMetricsNetworkPolicy:
+    create: false
+  kubeStateMetricsCore:
+    enabled: true
+  clusterName: k3d-k3s-default
+  kubelet:
+    host:
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
+    tlsVerify: false
+  logs:
+    enabled: true
+    containerCollectAll: true
+  apm:
+    socketEnabled: true
+    portEnabled: true
+    enabled: false
+    port: 8126
+  env:
+    - name: DD_HOSTNAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+  serviceMonitoring:
+    enabled: false
+  prometheusScrape:
+    enabled: false
+    serviceEndpoints: false
+  processAgent:
+    enabled: true
